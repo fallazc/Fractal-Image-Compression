@@ -312,5 +312,12 @@ class FractalEncoder:
                 for thread in self.__threads:
                         thread.join()
 
+                index = filename.rfind(".")
+                
+                if index < 1:
+                        index = len(filename)
+                
+                outputFilename = filename[:index] + ".fif"
+                
                 #Write the transformation data the file
-                self.__writeToFIle('Lenna.fif')
+                self.__writeToFIle(outputFilename)
