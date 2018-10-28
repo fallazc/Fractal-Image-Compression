@@ -11,20 +11,12 @@ import sys
 #Setup variables
 
 imagePath=""
-decompressionScale = 0
-nArguments = len(sys.argv)
 
-if nArguments < 2:
+if len(sys.argv) < 2:
         print("Path to image to compress is not specified")
         quit(-1)
 else:
         imagePath = sys.argv[1];
-        
-if nArguments < 3:
-        print("Decompression scale is not specified")
-        quit(-1)
-else:
-        decompressionScale = int(sys.argv[2]);
 
 if __name__ == '__main__':
         #for the decoder

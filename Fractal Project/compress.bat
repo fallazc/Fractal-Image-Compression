@@ -1,1 +1,1 @@
-python compress-demo.py LennaLow.bmp 3
+python compress-demo.py LennaLow.bmp

@@ -60,14 +60,14 @@ class FractalDecoder:
                 self.cmpImage = CompressedImage(filename, decompressionScale)
                 self.rImage = Image.new("L", (self.cmpImage.width, self.cmpImage.height), 128)
                 
-        def __showResult(self):
+        def saveResult(self):
                 """
                 Dispaly the result of the decompression after the
                 specified number of steps
                 """
-                self.rImage.show()
+                self.rImage.save("out.bmp")
                 
-        def __nextStep(self):
+        def nextStep(self):
                 """
                 Apply the stored transformations to the each range block
                 from the previous transformation of the Image
@@ -108,7 +108,9 @@ class FractalDecoder:
                         rangeChunk = rangeChunk.point(linearTransform)
                         self.rImage.paste(rangeChunk, (x, y))
 
-        def decodeImage(self, nSteps):
+                return self.rImage
+
+        def decodeImage(self, nSteps, saveOutput):
                 """
                 Decode the image by repeatedly applying
                 the transformations read
@@ -119,4 +121,7 @@ class FractalDecoder:
                 for i in range(nSteps):
                         self.__nextStep()
                 #Display result of the decoding
-                self.__showResult()
+                if saveOutput:
+                        self.saveResult()
+
+                return self.rImage
